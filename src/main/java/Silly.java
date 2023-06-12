@@ -37,7 +37,6 @@ public class Silly implements Comparable<Silly>{
         // This method uses the static variable and increases it.
         int to_return = my_static;
         my_static += 1;
-
         return to_return;
     }
 
@@ -80,7 +79,18 @@ public class Silly implements Comparable<Silly>{
      *       Make sure you document this method!
      */
 
-
+    /**
+     * Creates a new Silly object.
+     * This constructor takes in two String parameters as arguments.
+     * Afterwards, set this.name to the concatenation of both strings
+     * (e.g. this.name = [first string] + [second string]).
+     *
+     * @param name1 first part of name of this Silly instance's name.
+     * @param name2 second part of name of this Silly instance's name.
+     */
+    public Silly(String name1, String name2) {
+        this.name = name1 + name2;
+    }
 
 
 
@@ -116,7 +126,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {1,2,3,4};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -134,6 +144,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
@@ -161,6 +172,10 @@ public class Silly implements Comparable<Silly>{
 
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
+        if (this.name.equals(other.name)){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -194,6 +209,14 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+        int a = this.name.length();
+        int b = other.name.length();
+        if (a > b) {
+            return 1;
+        } else if (a == b) {
+            return 0;
+        }
+        return -1;
     }
 
     /*
